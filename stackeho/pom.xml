@@ -9,7 +9,7 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>org.genelite</groupId>
-	<artifactId>stackeho</artifactId>
+	<artifactId>stackecho</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>stackeho</name>
 	<description>Demo project for Resume</description>
