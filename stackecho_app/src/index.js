@@ -3,8 +3,21 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import {BrowserRouter} from "react-router-dom";
+import { ModalProvider } from './context/Modal';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
+
+function Root() {
+  return (
+    <ModalProvider>
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
+    </ModalProvider>
+  )
+}
+
 root.render(
   <React.StrictMode>
     <App />

@@ -1,5 +1,6 @@
 package org.genelite.stackecho.Services.UserServices;
 
+import org.genelite.stackecho.Utils.BCrypt;
 import org.genelite.stackecho.DAO.UserRepository;
 import org.genelite.stackecho.Entity.Users;
 import org.springframework.beans.factory.annotation.Autowired;

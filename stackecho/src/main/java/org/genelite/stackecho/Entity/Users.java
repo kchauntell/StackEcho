@@ -1,6 +1,6 @@
 package org.genelite.stackecho.Entity;
-
 import jakarta.persistence.*;
+import org.genelite.stackecho.Utils.BCrypt;
 
 import java.util.ArrayList;
 import java.util.Objects;
@@ -52,7 +52,7 @@ public class Users {
         this.firstname = firstname;
         this.lastname = lastname;
         this.email = email;
-        this.passwordHash = passwordHash;
+        this.passwordHash = BCrypt.hash(passwordHash);
 //        this.isLoggedIn = false;
     }
 
@@ -67,7 +67,7 @@ public class Users {
     public String getEmail() { return email; }
     public void setEmail(String email) { this.email = email; }
     public String getPasswordHash() { return passwordHash; }
-    public void setPasswordHash(String passwordHash) { this.passwordHash = passwordHash; }
+    public void setPasswordHash(String passwordHash) { this.passwordHash = BCrypt.hash(passwordHash); }
 //    public List<Posts> getPosts() { return posts; }
 //    public void setPosts(List<Posts> posts) { this.posts = posts; }
 //    public List<Comments> getComments() { return comments; }
