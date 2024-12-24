@@ -1,7 +1,11 @@
 package org.genelite.stackecho.Entity;
+
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 import org.genelite.stackecho.Utils.BCrypt;
+import org.springframework.data.annotation.CreatedDate;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Objects;
 import java.util.List;
@@ -29,6 +33,10 @@ public class Users {
     @Column(name="password_hash", nullable = false)
     private String passwordHash;
 
+    @CreatedDate
+    @Column(name="created_at", nullable = false, updatable = false)
+    public LocalDateTime createdAt = LocalDateTime.now();
+
     @OneToMany
     @Column(name="post_id")
     private List<Posts> posts = new ArrayList<>();
@@ -36,6 +44,11 @@ public class Users {
     @OneToMany
     @Column(name="comment_id")
     private List<Comments> comments = new ArrayList<>();
+
+
+    @Column(name="is_logged_in", nullable = false)
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+    private Boolean isLoggedIn = false;
 
     public Users () {}
 
@@ -68,10 +81,15 @@ public class Users {
     public void setEmail(String email) { this.email = email; }
     public String getPasswordHash() { return passwordHash; }
     public void setPasswordHash(String passwordHash) { this.passwordHash = BCrypt.hash(passwordHash); }
-//    public List<Posts> getPosts() { return posts; }
-//    public void setPosts(List<Posts> posts) { this.posts = posts; }
-//    public List<Comments> getComments() { return comments; }
-//    public void setComments(List<Comments> comments) { this.comments = comments; }
+    public LocalDateTime getCreatedAt() { return createdAt; }
+    public boolean isLoggedIn() {
+        System.out.println(isLoggedIn);
+        return isLoggedIn; }
+    public void setIsLoggedIn(boolean loggedIn) { this.isLoggedIn = loggedIn; }
+        public List<Posts> getPosts() { return posts; }
+    public void setPosts(List<Posts> posts) { this.posts = posts; }
+    public List<Comments> getComments() { return comments; }
+    public void setComments(List<Comments> comments) { this.comments = comments; }
 
 
     @Override

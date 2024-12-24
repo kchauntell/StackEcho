@@ -3,7 +3,10 @@ package org.genelite.stackecho.Services.UserServices;
 import org.genelite.stackecho.Utils.BCrypt;
 import org.genelite.stackecho.DAO.UserRepository;
 import org.genelite.stackecho.Entity.Users;
+import org.genelite.stackecho.Entity.Status;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Optional;
@@ -13,8 +16,11 @@ public class UserAppImplementation implements UserApplication {
     @Autowired
     public UserRepository userRepository;
 
+    public PasswordEncoder passwordEncoder;
+
     public UserAppImplementation(UserRepository userRepository) {
         this.userRepository = userRepository;
+        this.passwordEncoder = new BCryptPasswordEncoder();
     }
 
     @Override
@@ -30,6 +36,23 @@ public class UserAppImplementation implements UserApplication {
     @Override
     public Optional<Users> findByEmail(String email) {
         return this.userRepository.findByEmail(email);
+    }
+
+    @Override
+    public Status registerUser(Users newUser) {
+        List<Users> users= this.userRepository.findAll();
+
+        for(Users u: users) {
+            if(u.getUsername().equals(newUser.getUsername())) {
+                System.out.println("User already exists!");
+                return Status.USER_ALREADY_EXISTS;
+            }
+        }
+
+        String encoded= this.passwordEncoder.encode(newUser.getPasswordHash());
+        newUser.setPasswordHash(encoded);
+        this.userRepository.save(newUser);
+        return Status.SUCCESS;
     }
 
     @Override

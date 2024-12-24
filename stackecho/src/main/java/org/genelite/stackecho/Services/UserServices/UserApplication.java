@@ -1,6 +1,7 @@
 package org.genelite.stackecho.Services.UserServices;
 
 import org.genelite.stackecho.Entity.Users;
+import org.genelite.stackecho.Entity.Status;
 
 import java.util.List;
 import java.util.Optional;
@@ -11,6 +12,7 @@ public interface UserApplication {
     public Optional<Users> findByEmail(String email);
     public Users createUser(Users user) throws Exception;
     public Users updateUser(Users user) throws Exception;
+    Status registerUser(Users user);
     public void deleteUserByEmail(Users user) throws Exception;
     public void deleteUserByUsername(Users user) throws Exception;
 }

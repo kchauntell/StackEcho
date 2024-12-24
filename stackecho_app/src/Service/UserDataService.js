@@ -1,15 +1,20 @@
 import axios from 'axios';
 
-const API_URL = "http://localhost8080/api";
+const API_URL = "http://localhost:8080/api";
+const headers = {
+    "Content-Type": "application/json",
+    "Acceptd": "application/json"
+}
 
 class UserDataService {
     retrieveAllUser = async() => {
-        const response = await axios.get(`${API_URL}`);
+        const response = await axios.get(`${API_URL}`, {headers});
         return response.data;
     }
 
-    createUser(user) {
-        return axios.post(`${API_URL}/create_user`, user);
+    createUser = async(user) => {
+        const response = await axios.post(`${API_URL}/create_user`,{headers}, user);
+        return response.data;
     }
 
     updateUser(user) {
@@ -21,7 +26,7 @@ class UserDataService {
     }
 
     userLogin(username, password) {
-        return axios.post("http://localhost8080:/api/login",username,password)
+        return axios.post(`${API_URL}/login`, {headers},username,password)
     }
 }
 
