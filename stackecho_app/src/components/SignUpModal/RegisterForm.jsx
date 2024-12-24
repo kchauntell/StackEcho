@@ -1,9 +1,11 @@
 import React, { useState, useEffect} from "react";
-import { useNavigation} from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import UserDataService from "../../Service/UserDataService";
+import './RegisterForm.css'
 
-function SignUpForm() {
-    const navigate = useNavigation();
+
+function RegisterForm() {
+    const navigate = useNavigate();
     const [firstname, setFirstname] = useState('');
     const [lastname, setLastname] = useState('');
     const [username, setUsername] = useState('');
@@ -11,9 +13,11 @@ function SignUpForm() {
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
 
+
     const handleSubmit = (e) => {
+
         e.preventDefault();
-        if (password === confirmedPassword) {
+        if (password === confirmPassword) {
             UserDataService.createUser({
                 username,
                 firstname,
@@ -26,6 +30,7 @@ function SignUpForm() {
             return "Passwords Do Not Match"
         }
     }
+
 
     return (
         <form id='SignUpForm' onSubmit={handleSubmit}>
@@ -46,7 +51,7 @@ function SignUpForm() {
                         First Name:
                         <input
                         type="text"
-                        value={firstName}
+                        value={firstname}
                         onChange={(e) => setFirstname(e.target.value)}
                         required
                         />
@@ -57,7 +62,7 @@ function SignUpForm() {
                         Last Name:
                         <input
                         type="text"
-                        value={lastName}
+                        value={lastname}
                         onChange={(e) => setLastname(e.target.value)}
                         required
                         />
@@ -106,3 +111,5 @@ function SignUpForm() {
     )
     
 }
+
+export default RegisterForm;
