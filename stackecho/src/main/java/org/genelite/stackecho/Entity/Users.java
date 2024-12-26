@@ -18,19 +18,19 @@ public class Users {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @Column(name="username", nullable=false, unique=true, columnDefinition = "varchar(25)")
+    @Column(name="username")
     private String username;
 
-    @Column(name="firstname", nullable = false,columnDefinition = "varchar(50)")
+    @Column(name="firstname")
     private String firstname;
 
-    @Column(name="lastname", nullable = false, columnDefinition = "varchar(50)")
+    @Column(name="lastname")
     private String lastname;
 
-    @Column(name="email", nullable = false, unique = true, columnDefinition = "varchar(50)")
+    @Column(name="email")
     private String email;
 
-    @Column(name="password_hash", nullable = false)
+    @Column(name="password_hash")
     private String passwordHash;
 
     @CreatedDate
@@ -46,9 +46,9 @@ public class Users {
     private List<Comments> comments = new ArrayList<>();
 
 
-    @Column(name="is_logged_in", nullable = false)
+    @Column(name="is_logged_in")
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
-    private Boolean isLoggedIn = false;
+    private Boolean is_logged_in = false;
 
     public Users () {}
 
@@ -66,7 +66,7 @@ public class Users {
         this.lastname = lastname;
         this.email = email;
         this.passwordHash = BCrypt.hash(passwordHash);
-//        this.isLoggedIn = false;
+        this.is_logged_in = false;
     }
 
     public Long getId() { return id; }
@@ -83,9 +83,9 @@ public class Users {
     public void setPasswordHash(String passwordHash) { this.passwordHash = BCrypt.hash(passwordHash); }
     public LocalDateTime getCreatedAt() { return createdAt; }
     public boolean isLoggedIn() {
-        System.out.println(isLoggedIn);
-        return isLoggedIn; }
-    public void setIsLoggedIn(boolean loggedIn) { this.isLoggedIn = loggedIn; }
+        System.out.println(is_logged_in);
+        return is_logged_in; }
+    public void setIsLoggedIn(boolean loggedIn) { this.is_logged_in = loggedIn; }
         public List<Posts> getPosts() { return posts; }
     public void setPosts(List<Posts> posts) { this.posts = posts; }
     public List<Comments> getComments() { return comments; }

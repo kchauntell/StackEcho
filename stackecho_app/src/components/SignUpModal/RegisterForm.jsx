@@ -10,20 +10,20 @@ function RegisterForm() {
     const [lastname, setLastname] = useState('');
     const [username, setUsername] = useState('');
     const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
+    const [passwordHash, setPasswordHash] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
 
 
     const handleSubmit = (e) => {
 
         e.preventDefault();
-        if (password === confirmPassword) {
+        if (password_hash === confirmPassword) {
             UserDataService.createUser({
                 username,
                 firstname,
                 lastname,
                 email,
-                password
+                passwordHash
             });
             return navigate("/")
         } else {
@@ -84,8 +84,8 @@ function RegisterForm() {
                         Password:
                         <input
                         type="password"
-                        value={password}
-                        onChange={(e) => setPassword(e.target.value)}
+                        value={passwordHash}
+                        onChange={(e) => setPasswordHash(e.target.value)}
                         required
                         />
                     </label>
