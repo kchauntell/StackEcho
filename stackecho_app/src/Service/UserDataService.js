@@ -7,13 +7,13 @@ const headers = {
 }
 
 class UserDataService {
-    retrieveAllUser = async() => {
-        const response = await axios.get(`${API_URL}`);
+    retrieveAllUser () {
+        const response = axios.get(`${API_URL}`);
         return response.data;
     }
 
-    createUser = async(user) => {
-        const response = await axios.post(`${API_URL}/create_user`, user);
+    createUser (user) {
+        const response = axios.post(`${API_URL}/create_user`, user);
         return response.data;
     }
 

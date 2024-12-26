@@ -17,7 +17,7 @@ function RegisterForm() {
     const handleSubmit = (e) => {
 
         e.preventDefault();
-        if (password_hash === confirmPassword) {
+        if (passwordHash === confirmPassword) {
             UserDataService.createUser({
                 username,
                 firstname,
