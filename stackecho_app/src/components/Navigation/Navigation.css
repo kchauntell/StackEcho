@@ -1,0 +1,37 @@
+#nav-container {
+display: flex;
+align-items: center;
+justify-content: space-between;
+padding-top: 10px;
+}
+
+#home {
+float: left;
+/* margin-left: 10px; */
+}
+
+#home-button {
+padding-left: 10px;
+padding-right: 10px;
+color: azure;
+}
+
+#login-register-buttons {
+display: flex;
+float:right;
+margin-right: 10px;
+}
+
+button{
+font-size: 20px;
+margin-left: 10px;
+background-color: transparent;
+background-repeat: no-repeat;
+border: none;
+outline: none;
+border-radius: 5px;
+border-style: none;
+padding: 2px 10px 2px 10px;
+font-weight: bold;
+color: rgb(153, 201, 241);
+}

@@ -1,0 +1,16 @@
+#footer-container {
+background-color: rgba(0, 0, 12, 0.829);
+-webkit-background-size: cover;
+-moz-background-size: cover;
+-o-background-size: cover;
+background-size: cover;
+color: white;
+padding: 2px;
+bottom: 0;
+position: fixed;
+width: 100%;
+text-align: center;
+border-top: 4mm ridge rgba(20, 100, 237, 0.9);
+text-shadow: 1px 1px 10px rgb(74, 180, 246), 0 0 2em blue, 0 0 0.3em blue;
+margin: 0 auto;
+}

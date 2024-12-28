@@ -23,7 +23,6 @@ function HomePage() {
 
     return (
         <div>
-            <h1>Welcome to StackEcho! </h1>
             <h2>Community of Coders Helping Coders!</h2>
             {allPosts.map(post => (
                 <div key = {post.postId}>
